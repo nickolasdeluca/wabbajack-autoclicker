@@ -11,9 +11,9 @@ import os
 from threading import Thread
 
 # Custom Variables
-max_loop = 2
+max_loop = 99999
 click_interval = 1
-loop_interval = 1
+loop_interval = 3
 
 # search and click image in the center
 def clickImage(image, threshold=0.5):
@@ -47,16 +47,17 @@ def clickImage(image, threshold=0.5):
 
 #main thread
 def main():
-    loop = 0    
+    loop = 1    
     time.sleep(1) 
     while loop < max_loop:
         # search images in input_images folder
         for file in glob.glob("./input_images/*.png"):
-            print("File: " + file)
-            ret = clickImage(file)
+            print(f"Searching for {file}, Iteration {loop}")
+            ret = clickImage(file)            
             if (ret == -1):
-                loop = max_loop
-                break
+                print(f"Iteration {loop} not found")
+            else:
+                print(f"Iteration {loop} found and clicked")                                
             time.sleep(click_interval)
         loop += 1
         time.sleep(loop_interval) 
