@@ -50,7 +50,7 @@ def main():
     loop = 1    
     time.sleep(1) 
     while loop < max_loop:
-        # search images in input_images folder
+        key_listener()
         for file in glob.glob("./input_images/*.png"):
             print(f"Searching for {file}, Iteration {loop}")
             ret = clickImage(file)            
@@ -64,21 +64,16 @@ def main():
     os._exit(0)    
 
 #interrupt thread
-def key_listener():
-    if keyboard.read_key() == "esc":
+def key_listener():    
+    if keyboard.is_pressed("esc"):
         print("Interrupted")
         os._exit(0)
         
 try:
-    print("Press 'Escape' to quit this application anytime")
-
-    thread1 = Thread(target = main)
-    thread2 = Thread(target = key_listener)
-    
-    thread1.start()
-    thread2.start()
-    thread1.join()
-    thread2.join()
+    print("Hold 'Escape' to quit this application while the loop is running.")
+    thread1 = Thread(target = main)    
+    thread1.start()    
+    thread1.join()    
     
 except:
     print ("Exiting")
