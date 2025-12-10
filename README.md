@@ -1,25 +1,41 @@
- # Description
-Automate mouse clicks using image detection in current screen any number of times with python
+# Wabbajack free auto-downloader
 
-# How it works
-Dump all your images in "input_images" folder, label accordingly which image you wish to click. Code will search all available images.
-Then it will automate mouse left clicks (center of image) in the order of the naming in loops, examples are included.
+## Description
 
-Example: 1_edge.png -> 2_folder.png -> 3_windows.png
+Automate mouse clicks using image detection to download Wabbajack mod lists as a free nexus user.
 
-# Requirements
-1) Install python
-2) In command prompt, enter:
-   pip install pyautogui keyboard numpy opencv-python
+## How it works
 
-# Custom Variables
+It'll look for the following button (Nexus download page) every three seconds.
+
+![image](./input_images/1_button.png)
+
+If it finds it, it'll press it.
+
+If it doesn't, it'll log that it wasn't found and move.
+
+The loop will iterate 99999 times. After that, the program will end.
+
+If you need more than that, just start it again.
+
+## Requirements
+
+1) Install python. `(This script was tested against version 3.13.7)`
+2) In a prompt, enter: `pip install pyautogui keyboard numpy opencv-python pillow pyscreeze`
+3) This was made to run on a Windows environment, was never tested with macOS or a Linux desktop distro.
+
+## Custom Variables
+
 1) max_loop: the amount of loops you want to run (default 2)
 2) click_interval: interval between each mouse clicks in second (default 1)
 3) loop_interval: interval between each loop in second  (default 1)
 
-# How to run
-1) Double click "custom_automation.py"
-2) If you are running windows 10 OS, it will automate the mouse clicks by default examples
-3) Press "Escape" to quit
-4) Use sniping tool or print screen and crop any png image you wish to automate and dump to "input_images" folder.
-5) Set the custom variables, start the script, run your own mouse click automation.
+## How to run
+
+1) You can either `Double click "custom_automation.py"` or run `python custom_automation.py`.
+2) Press "Escape" to quit
+3) Set the custom variables, start the script, run your own mouse click automation.
+
+## Future changes
+
+1) Add a customisation environment file to allow customizing the variables without having to modify the script itself.
